@@ -2,12 +2,13 @@ local fileVersion = "v0.01"
 
 local playerFunctions = {}
 local otherFunctions = {}
+
 function playerFunctions.getTeam(Player) -- // Return the player Team and TeamColor
     local Team = Player.Team 
     return Team, Player.TeamColor.Color
 end
 
-function playerFunctions:getCharacter(Player) -- // Return the player Character and RootPart
+function playerFunctions.getCharacter(Player) -- // Return the player Character and RootPart
     local Character = Player.Character 
     return Character, Character and findFirstChild(Character, "HumanoidRootPart") -- // check if Character exists and return the RootPart
 end
@@ -35,5 +36,12 @@ local otherFunctions.getESPOffsetEnabled = false
 local otherFunctions.getESPOffset()
     return Vector2.new(0,0)
 end 
+
+--[[custom ESP Objects
+
+local chestToggle = customESPObjects.Add("Chest") -- // adds a toggle to the ui, returns a table; (chestToggle.Value, chestToggle:Disable(), chestToggle:Enable())
+
+
+--]]
 
 return playerFunctions, otherFunctions, fileVersion
