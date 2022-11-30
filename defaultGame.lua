@@ -1,3 +1,5 @@
+local fileVersion = "v0.01"
+
 local playerFunctions = {}
 local otherFunctions = {}
 function playerFunctions.getTeam(Player) -- // Return the player Team and TeamColor
