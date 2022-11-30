@@ -18,6 +18,23 @@ local emptyParams = raycastParamsNew()
 emptyParams.IgnoreWater = true 
 emptyParams.FilterType = BlacklistFilterType
 
+local Players = game:GetService("Players")
+
+-- // Character Handler 
+
+local characterList = {}
+for i, v in pairs(workspace:GetChildren()) do
+    if v:FindFirstChild("Head") ~= nil and v.Head:FindFirstChild("Nametag") ~= nil and Players:FindFirstChild(v.Head.Nametag.tag.Text) then 
+        characterList[v.Head.Nametag.tag.Text] = v 
+    end 
+end 
+
+workspace.ChildAdded:Connect(function(v)
+    if v:FindFirstChild("Head") ~= nil and v.Head:FindFirstChild("Nametag") ~= nil and Players:FindFirstChild(v.Head.Nametag.tag.Text) then 
+        characterList[v.Head.Nametag.tag.Text] = v 
+    end 
+end)
+
 -- // Functions
 
 function playerFunctions.getTeam(Player) -- // Return the player Team and TeamColor
@@ -26,7 +43,7 @@ function playerFunctions.getTeam(Player) -- // Return the player Team and TeamCo
 end
 
 function playerFunctions.getCharacter(Player) -- // Return the player Character and RootPart
-    local Character = Player.Character 
+    local Character = characterList[Player.Name]
     return Character, Character and findFirstChild(Character, "HumanoidRootPart") -- // check if Character exists and return the RootPart
 end
 
@@ -54,9 +71,5 @@ otherFunctions.getESPOffsetEnabled = false
 function otherFunctions.getESPOffset()
     return Vector2.new(0,0)
 end 
-
---[[custom ESP Objects
-local chestToggle = customESPObjects.Add("Chest") -- // adds a toggle to the ui, returns a table; (chestToggle.Value, chestToggle:Disable(), chestToggle:Enable())
---]]
 
 return playerFunctions, otherFunctions, fileVersion
