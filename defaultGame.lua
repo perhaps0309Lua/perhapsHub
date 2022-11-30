@@ -36,4 +36,4 @@ local otherFunctions.getESPOffset()
     return Vector2.new(0,0)
 end 
 
-return playerFunctions
+return playerFunctions, otherFunctions, fileVersion
