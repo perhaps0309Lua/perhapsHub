@@ -27,12 +27,12 @@ function playerFunctions.isVisible(Character, castPosition)
     return not Raycast(workspace, cameraOrigin, castPosition - cameraOrigin, newParams)
 end
 
-local otherFunctions.getMouseOffsetEnabled = false 
+otherFunctions.getMouseOffsetEnabled = false 
 local function otherFunctions.getMouseOffset()
     return Vector2.new(0,0)
 end 
 
-local otherFunctions.getESPOffsetEnabled = false 
+otherFunctions.getESPOffsetEnabled = false 
 local function otherFunctions.getESPOffset()
     return Vector2.new(0,0)
 end 
