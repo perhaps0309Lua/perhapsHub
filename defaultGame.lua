@@ -28,20 +28,17 @@ function playerFunctions.isVisible(Character, castPosition)
 end
 
 local otherFunctions.getMouseOffsetEnabled = false 
-local otherFunctions.getMouseOffset()
+local function otherFunctions.getMouseOffset()
     return Vector2.new(0,0)
 end 
 
 local otherFunctions.getESPOffsetEnabled = false 
-local otherFunctions.getESPOffset()
+local function otherFunctions.getESPOffset()
     return Vector2.new(0,0)
 end 
 
 --[[custom ESP Objects
-
 local chestToggle = customESPObjects.Add("Chest") -- // adds a toggle to the ui, returns a table; (chestToggle.Value, chestToggle:Disable(), chestToggle:Enable())
-
-
 --]]
 
 return playerFunctions, otherFunctions, fileVersion
