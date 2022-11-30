@@ -1,4 +1,5 @@
 local playerFunctions = {}
+local otherFunctions = {}
 function playerFunctions.getTeam(Player) -- // Return the player Team and TeamColor
     local Team = Player.Team 
     return Team, Player.TeamColor.Color
@@ -22,5 +23,15 @@ function playerFunctions.isVisible(Character, castPosition)
     newParams.FilterDescendantsInstances = {localPlayerCharacter, currentCamera, Character}
     return not Raycast(workspace, cameraOrigin, castPosition - cameraOrigin, newParams)
 end
+
+local otherFunctions.getMouseOffsetEnabled = false 
+local otherFunctions.getMouseOffset()
+    return Vector2.new(0,0)
+end 
+
+local otherFunctions.getESPOffsetEnabled = false 
+local otherFunctions.getESPOffset()
+    return Vector2.new(0,0)
+end 
 
 return playerFunctions
