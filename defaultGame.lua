@@ -3,6 +3,23 @@ local fileVersion = "v0.01"
 local playerFunctions = {}
 local otherFunctions = {}
 
+-- // Variables
+
+local findFirstChild = game.FindFirstChild
+
+local Raycast = workspace.Raycast
+
+local Enum = Enum
+local RaycastFilterType = Enum.RaycastFilterType
+local BlacklistFilterType = RaycastFilterType.Blacklist
+
+local raycastParamsNew = RaycastParams.new 
+local emptyParams = raycastParamsNew()
+emptyParams.IgnoreWater = true 
+emptyParams.FilterType = BlacklistFilterType
+
+-- // Functions
+
 function playerFunctions.getTeam(Player) -- // Return the player Team and TeamColor
     local Team = Player.Team 
     return Team, Player.TeamColor.Color
