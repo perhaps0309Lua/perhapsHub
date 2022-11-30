@@ -1,4 +1,4 @@
-local fileVersion = "v0.01"
+local fileVersion = "v1.0a"
 
 local playerFunctions = {}
 local otherFunctions = {}
