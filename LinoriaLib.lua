@@ -330,7 +330,10 @@ function Library:OnUnload(Callback)
     Library.OnUnload = Callback
 end
 
-Options.Unload = Library.Unload
+Options.Unload = { -- // prevent errors
+    Type = "Unload",
+    Func = Library.Unload
+}
 
 Library:GiveSignal(ScreenGui.DescendantRemoving:Connect(function(Instance)
     if Library.RegistryMap[Instance] then
