@@ -586,6 +586,7 @@ do
                     print("["..ColorPicker.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
                 elseif not Success then -- // warn saying that the callback failed, and the error
                     warn("["..ColorPicker.Title..'] callback failed: '..Response.." -- ERROR --")
+                    Library:Notify("Callback failed: "..Response, 10)
                 end 
             end;
         end;
@@ -1368,6 +1369,7 @@ do
                     print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                 elseif not Success then -- // warn saying that the callback failed, and the error
                     warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
+                    Library:Notify("Callback failed: "..Response, 10)
                 end 
             end;
         end;
@@ -1542,6 +1544,7 @@ do
                     print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                 elseif not Success then -- // warn saying that the callback failed, and the error
                     warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
+                    Library:Notify("Callback failed: "..Response, 10)
                 end 
             end;
         end;
@@ -1723,6 +1726,7 @@ do
                     print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                 elseif not Success then -- // warn saying that the callback failed, and the error
                     warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
+                    Library:Notify("Callback failed: "..Response, 10)
                 end 
             end;
         end;
@@ -1749,6 +1753,7 @@ do
                             print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                         elseif not Success then -- // warn saying that the callback failed, and the error
                             warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
+                            Library:Notify("Callback failed: "..Response, 10)
                         end 
                     end;
 
@@ -2059,6 +2064,7 @@ do
                                     print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                                 elseif not Success then -- // warn saying that the callback failed, and the error
                                     warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
+                                    Library:Notify("Callback failed: "..Response, 10)
                                 end 
                             end;
 
@@ -2124,6 +2130,7 @@ do
                     print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                 elseif not Success then -- // warn saying that the callback failed, and the error
                     warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
+                    Library:Notify("Callback failed: "..Response, 10)
                 end 
             end
         end;
