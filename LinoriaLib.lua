@@ -581,7 +581,12 @@ do
             RgbBox.Text = table.concat({ math.floor(ColorPicker.Value.R * 255), math.floor(ColorPicker.Value.G * 255), math.floor(ColorPicker.Value.B * 255) }, ', ')
 
             if ColorPicker.Callback then
-                ColorPicker.Callback(ColorPicker.Value)
+                local Success, Response = pcall(ColorPicker.Callback, ColorPicker.Value)
+                if Library.Debug and Success then 
+                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                elseif not Success then -- // warn saying that the callback failed, and the error
+                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                end 
             end;
         end;
 
@@ -1357,7 +1362,12 @@ do
             Box.Text = Text;
                 
             if Textbox.Callback then
-                Textbox.Callback(Textbox.Value)
+                local Success, Response = pcall(Textbox.Callback, Textbox.Value)
+                if Library.Debug and Success then 
+                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                elseif not Success then -- // warn saying that the callback failed, and the error
+                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                end 
             end;
         end;
 
@@ -1525,7 +1535,12 @@ do
             end
 
             if Toggle.Callback then
-                Toggle.Callback(Toggle.Value)
+                local Success, Response = pcall(Toggle.Callback, Toggle.Value)
+                if Library.Debug and Success then 
+                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                elseif not Success then -- // warn saying that the callback failed, and the error
+                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                end 
             end;
         end;
 
@@ -1700,7 +1715,12 @@ do
             Slider:Display();
 
             if Slider.Callback then
-                Slider.Callback(Slider.Value)
+                local Success, Response = pcall(Slider.Callback, Slider.Value)
+                if Library.Debug and Success then 
+                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                elseif not Success then -- // warn saying that the callback failed, and the error
+                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                end 
             end;
         end;
 
@@ -1721,7 +1741,12 @@ do
                     Slider:Display();
 
                     if nValue ~= OldValue and Slider.Callback then
-                        Slider.Callback(Slider.Value)
+                        local Success, Response = pcall(Slider.Callback, Slider.Value)
+                        if Library.Debug and Success then 
+                            print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                        elseif not Success then -- // warn saying that the callback failed, and the error
+                            warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                        end 
                     end;
 
                     RenderStepped:Wait();
@@ -2024,7 +2049,12 @@ do
                             Dropdown:Display();
 
                             if Dropdown.Callback then
-                                Dropdown.Callback(Dropdown.Value)
+                                local Success, Response = pcall(Dropdown.Callback, Dropdown.Value)
+                                if Library.Debug and Success then 
+                                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                                elseif not Success then -- // warn saying that the callback failed, and the error
+                                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                                end 
                             end;
 
                             Library:AttemptSave();
@@ -2083,7 +2113,14 @@ do
             Dropdown:SetValues();
             Dropdown:Display();
             
-            if Dropdown.Callback then Dropdown.Callback(Dropdown.Value) end
+            if Dropdown.Callback then 
+                local Success, Response = pcall(Dropdown.Callback, Dropdown.Value)
+                if Library.Debug and Success then 
+                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                elseif not Success then -- // warn saying that the callback failed, and the error
+                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                end 
+            end
         end;
 
         DropdownOuter.InputBegan:Connect(function(Input)
