@@ -583,9 +583,9 @@ do
             if ColorPicker.Callback then
                 local Success, Response = pcall(ColorPicker.Callback, ColorPicker.Value)
                 if Library.Debug and Success then 
-                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                    print("["..ColorPicker.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
                 elseif not Success then -- // warn saying that the callback failed, and the error
-                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                    warn("["..ColorPicker.Title..'] callback failed: '..Response.." -- ERROR --")
                 end 
             end;
         end;
@@ -1347,6 +1347,7 @@ do
             Textbox.Callback = Info.Callback
         end
         
+        Info.Text = Info.Text and typeof(Info.Text) == 'string' and Info.Text or 'Input';
         function Textbox:SetValue(Text)
             if Info.MaxLength and #Text > Info.MaxLength then
                 Text = Text:sub(1, Info.MaxLength);
@@ -1364,9 +1365,9 @@ do
             if Textbox.Callback then
                 local Success, Response = pcall(Textbox.Callback, Textbox.Value)
                 if Library.Debug and Success then 
-                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                    print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                 elseif not Success then -- // warn saying that the callback failed, and the error
-                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                    warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
                 end 
             end;
         end;
@@ -1521,6 +1522,7 @@ do
             Toggle.Callback = Info.Callback 
         end 
 
+        Info.Text = Info.Text and typeof(Info.Text) == 'string' and Info.Text or 'Toggle';
         function Toggle:SetValue(Bool)
             Bool = (not not Bool);
 
@@ -1537,9 +1539,9 @@ do
             if Toggle.Callback then
                 local Success, Response = pcall(Toggle.Callback, Toggle.Value)
                 if Library.Debug and Success then 
-                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                    print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                 elseif not Success then -- // warn saying that the callback failed, and the error
-                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                    warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
                 end 
             end;
         end;
@@ -1702,6 +1704,7 @@ do
             Slider.Callback = Info.Callback
         end 
 
+        Info.Text = Info.Text and typeof(Info.Text) == 'string' and Info.Text or 'Slider';
         function Slider:SetValue(Str)
             local Num = tonumber(Str);
 
@@ -1717,9 +1720,9 @@ do
             if Slider.Callback then
                 local Success, Response = pcall(Slider.Callback, Slider.Value)
                 if Library.Debug and Success then 
-                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                    print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                 elseif not Success then -- // warn saying that the callback failed, and the error
-                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                    warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
                 end 
             end;
         end;
@@ -1743,9 +1746,9 @@ do
                     if nValue ~= OldValue and Slider.Callback then
                         local Success, Response = pcall(Slider.Callback, Slider.Value)
                         if Library.Debug and Success then 
-                            print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                            print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                         elseif not Success then -- // warn saying that the callback failed, and the error
-                            warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                            warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
                         end 
                     end;
 
@@ -1795,6 +1798,8 @@ do
 
             Groupbox:AddBlank(3);
         end
+
+        Info.Text = Info.Text and typeof(Info.Text) == 'string' and Info.Text or 'Dropdown';
 
         for _, Element in next, Container:GetChildren() do
             if not Element:IsA('UIListLayout') then
@@ -2051,9 +2056,9 @@ do
                             if Dropdown.Callback then
                                 local Success, Response = pcall(Dropdown.Callback, Dropdown.Value)
                                 if Library.Debug and Success then 
-                                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                                    print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                                 elseif not Success then -- // warn saying that the callback failed, and the error
-                                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                                    warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
                                 end 
                             end;
 
@@ -2116,9 +2121,9 @@ do
             if Dropdown.Callback then 
                 local Success, Response = pcall(Dropdown.Callback, Dropdown.Value)
                 if Library.Debug and Success then 
-                    print("["..Info.Title..'] callback returned: '..tostring(Response).." -- DEBUG --")
+                    print("["..Info.Text..'] callback returned: '..tostring(Response).." -- DEBUG --")
                 elseif not Success then -- // warn saying that the callback failed, and the error
-                    warn("["..Info.Title..'] callback failed: '..Response.." -- ERROR --")
+                    warn("["..Info.Text..'] callback failed: '..Response.." -- ERROR --")
                 end 
             end
         end;
