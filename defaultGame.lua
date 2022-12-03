@@ -1,4 +1,4 @@
-local fileVersion = "v1.0b"
+local fileVersion = "v1.0c"
 
 local playerFunctions = {}
 local otherFunctions = {}
@@ -23,6 +23,7 @@ local cameraCFrame = currentCamera.CFrame
 local cameraOrigin = cameraCFrame.Position
 
 local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
 
 -- // Functions
 
@@ -50,13 +51,19 @@ function playerFunctions.isVisible(Character, castPosition, localPlayerCharacter
     return not Raycast(workspace, cameraOrigin, castPosition - cameraOrigin, newParams)
 end
 
-function playerFunctions.GetPlayerFromCharacter(Character)
+function playerFunctions.getPlayerFromCharacter(Character)
     return Players:GetPlayerFromCharacter(Character)
 end
 
-function playerFunctions.GetColor(Object)
+function playerFunctions.getColor(Object)
     local isPlayer = playerFunctions.GetPlayerFromCharacter(Object)
     return isPlayer and isPlayer.Team and isPlayer.Team.TeamColor and isPlayer.Team.TeamColor.Color or false -- // false will just default to rgb(0, 255, 0)
+end
+
+function playerFunctions.isTeammate(Player)
+    local playerTeam = playerFunctions.getTeam(Player)
+    local localPlayerTeam = playerFunctions.getTeam(LocalPlayer)
+    return playerTeam == localPlayerTeam
 end
 
 otherFunctions.getMouseOffsetEnabled = false 
