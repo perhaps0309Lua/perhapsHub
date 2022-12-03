@@ -1,4 +1,4 @@
-local fileVersion = "v1.0a"
+local fileVersion = "v1.0b"
 
 local playerFunctions = {}
 local otherFunctions = {}
@@ -17,6 +17,12 @@ local raycastParamsNew = RaycastParams.new
 local emptyParams = raycastParamsNew()
 emptyParams.IgnoreWater = true 
 emptyParams.FilterType = BlacklistFilterType
+
+local currentCamera = workspace.CurrentCamera
+local cameraCFrame = currentCamera.CFrame 
+local cameraOrigin = cameraCFrame.Position
+
+local Players = game:GetService("Players")
 
 -- // Functions
 
@@ -37,13 +43,21 @@ function playerFunctions.getHealth(Character)
     return Humanoid.Health, Humanoid.MaxHealth
 end
 
-function playerFunctions.isVisible(Character, castPosition)
+function playerFunctions.isVisible(Character, castPosition, localPlayerCharacter)
     local newParams = emptyParams;
 
     newParams.FilterDescendantsInstances = {localPlayerCharacter, currentCamera, Character}
     return not Raycast(workspace, cameraOrigin, castPosition - cameraOrigin, newParams)
 end
 
+function playerFunctions.GetPlayerFromCharacter(Character)
+    return Players:GetPlayerFromCharacter(Character)
+end
+
+function playerFunctions.GetColor(Object)
+    local isPlayer = playerFunctions.GetPlayerFromCharacter(Object)
+    return isPlayer and isPlayer.Team and isPlayer.Team.TeamColor and isPlayer.Team.TeamColor.Color or false -- // false will just default to rgb(0, 255, 0)
+end
 
 otherFunctions.getMouseOffsetEnabled = false 
 function otherFunctions.getMouseOffset()
