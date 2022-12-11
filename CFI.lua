@@ -267,7 +267,7 @@ task.spawn(function()
 
         local currentCount = getSeedCount:InvokeServer(chosenCrop)
         if currentCount ~= 420 and typeof(currentCount) == "number" then 
-            buySomethingElse:InvokeServer("Seed", chosenCrop, islandBuyAmount)
+            buySomethingElse:InvokeServer("Seed", chosenCrop, 420-currentCount)
         end
     end
 end)
