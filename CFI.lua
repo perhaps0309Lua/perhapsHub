@@ -217,11 +217,11 @@ end)
 
 task.spawn(function() -- // auto sell
     while task.wait(1) do 
-        if autoSellEnabled then 
+        if autoSellAll then 
             for i, v in pairs(validCrops) do 
                 buttonClicked:InvokeServer("Max", v)
             end 
-        else 
+        elseif autoSellEnabled then 
             for i, v in pairs(autoSellValues) do 
                 buttonClicked:InvokeServer("Max", v)
             end
