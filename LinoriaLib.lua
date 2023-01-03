@@ -2027,6 +2027,7 @@ do
                     Library.RegistryMap[ButtonLabel].Properties.TextColor3 = Selected and 'AccentColor' or 'FontColor';
                 end;
 
+                local lastValue = nil;
                 ButtonLabel.InputBegan:Connect(function(Input)
                     if Input.UserInputType == Enum.UserInputType.MouseButton1 then
                         local Try = not Selected;
@@ -2039,7 +2040,12 @@ do
                                 if Selected then
                                     Dropdown.Value[Value] = true;
                                 else
-                                    Dropdown.Value[Value] = nil;
+                                    if lastValue then 
+                                        Dropdown.Value[lastValue] = nil;
+                                    end
+
+                                    lastValue = Value;
+                                    Dropdown.Value[Value] = false;
                                 end;
                             else
                                 Selected = Try;
